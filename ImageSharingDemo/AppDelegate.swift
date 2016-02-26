@@ -18,12 +18,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     {
         // One Signal initialization (Calls registerForRemoteNotifications):
         
-        oneSignal = OneSignal(launchOptions: launchOptions, appId: Constants.appId, handleNotification: {
+        oneSignal = OneSignal(launchOptions: launchOptions,
+                                      appId: Constants.appId,
+            handleNotification: { // Called when a notification is opened or received while the app is in use.
             
                 (message, additionalData, isActive) in
             
                 let entityId = additionalData["EntityId"] as! String
-                print("Entity ID = \(entityId)")
+                NSNotificationCenter.defaultCenter().postNotificationName("NewPhoto", object: entityId)
             },
             autoRegister: false)
         
@@ -41,15 +43,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         oneSignal.registerForPushNotifications() // Calls registerUserNotificationSettings:
     }
     
+    // Called after a call to registerUserNotificationSettings:
     func application(application: UIApplication, didRegisterUserNotificationSettings notificationSettings: UIUserNotificationSettings)
     {
         let defaults = NSUserDefaults.standardUserDefaults()
+        
+        if defaults.objectForKey("RegisteredNotificationSettings") == nil
+        {
             defaults.setObject("true", forKey: "RegisteredNotificationSettings")
             defaults.synchronize()
-        
-        NSNotificationCenter.defaultCenter().postNotificationName("SessionStarted", object: nil)
+            
+            NSNotificationCenter.defaultCenter().postNotificationName("SessionStarted", object: nil)
+        }
     }
     
+    // Called after a call to registerForRemoteNotifications
     func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData)
     {
         let defaults = NSUserDefaults.standardUserDefaults()

@@ -14,6 +14,7 @@ class PickImage_VC: UIViewController, UICollectionViewDataSource, UICollectionVi
     @IBOutlet weak var albumButton: UIButton!
     @IBOutlet weak var cameraButton: UIButton!
     @IBOutlet weak var signOutButton: UIButton!
+    @IBOutlet weak var filtersContainerView: UIView!
     @IBOutlet weak var authenticationContainerView: UIView!
     
     @IBOutlet weak var buttonsStackViewHeightConstraint: NSLayoutConstraint!
@@ -33,7 +34,8 @@ class PickImage_VC: UIViewController, UICollectionViewDataSource, UICollectionVi
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "sessionStarted",
                                                                 name: "SessionStarted", object: nil)
         
-        // IMPLEMENT PULL TO REFRESH IN COLLECTION VIEW!
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "newPhoto:",
+                                                                name: "NewPhoto", object: nil)
 
         picker.delegate = self
         prefersStatusBarHidden()
@@ -83,6 +85,12 @@ class PickImage_VC: UIViewController, UICollectionViewDataSource, UICollectionVi
     {
         authenticationContainerView.hidden = true
         retrieveImages()
+    }
+    
+    func newPhoto(notification: NSNotification)
+    {
+        let entityId = notification.object as! String
+        print("New photo with id = \(entityId)")
     }
     
     //-------------------------------------------------------------------------//
@@ -147,8 +155,11 @@ class PickImage_VC: UIViewController, UICollectionViewDataSource, UICollectionVi
                 
                 if status == "No results"
                 {
-                    self.searchingMore = false
-                    self.hasMoreToShow = false
+                    if self.images.count > 0
+                    {
+                        self.searchingMore = false
+                        self.hasMoreToShow = false
+                    }
                 }
                 else if self.images.count == 0
                 {

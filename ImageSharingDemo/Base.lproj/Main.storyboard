@@ -56,11 +56,11 @@
                                     <outlet property="delegate" destination="apK-1V-y78" id="1ja-Ec-XQx"/>
                                 </connections>
                             </collectionView>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="qdk-eu-jms" userLabel="Buttons Stack View">
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="qdk-eu-jms" userLabel="Buttons Stack View">
                                 <rect key="frame" x="0.0" y="528" width="320" height="40"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Cg-pC-DjO" userLabel="Album button">
-                                        <rect key="frame" x="0.0" y="0.0" width="103" height="40"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="106" height="40"/>
                                         <color key="backgroundColor" red="1" green="0.5058823823928833" blue="0.40392157435417175" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                         <state key="normal" title="Album">
@@ -71,7 +71,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Igh-xw-aT0" userLabel="Camera Button">
-                                        <rect key="frame" x="108" y="0.0" width="104" height="40"/>
+                                        <rect key="frame" x="107" y="0.0" width="106" height="40"/>
                                         <color key="backgroundColor" red="1" green="0.50588238240000005" blue="0.40392157439999998" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                         <state key="normal" title="Camera">
@@ -82,7 +82,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3bq-Wb-Do3" userLabel="Sign out Button">
-                                        <rect key="frame" x="217" y="0.0" width="103" height="40"/>
+                                        <rect key="frame" x="214" y="0.0" width="106" height="40"/>
                                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                         <state key="normal" title="Sign out">
@@ -98,6 +98,12 @@
                                     <constraint firstAttribute="height" constant="40" id="jsP-dN-gpD"/>
                                 </constraints>
                             </stackView>
+                            <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OGM-ul-GSi" userLabel="Filters Container View">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <connections>
+                                    <segue destination="HoH-U9-9is" kind="embed" id="OqH-6s-nPX"/>
+                                </connections>
+                            </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dPP-nk-tJU" userLabel="Authentication Container View">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <connections>
@@ -109,11 +115,15 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="l5f-rf-DLu" secondAttribute="trailing" id="1Vv-Bb-cIe"/>
                             <constraint firstItem="l5f-rf-DLu" firstAttribute="leading" secondItem="b6L-Zm-Wgh" secondAttribute="leading" id="5s4-7b-u3I"/>
+                            <constraint firstItem="OGM-ul-GSi" firstAttribute="top" secondItem="dz9-Vg-6zw" secondAttribute="bottom" id="6zQ-IE-zC4"/>
+                            <constraint firstItem="kzs-aH-zTS" firstAttribute="top" secondItem="OGM-ul-GSi" secondAttribute="bottom" id="Bbu-U3-8Ac"/>
                             <constraint firstItem="kzs-aH-zTS" firstAttribute="top" secondItem="qdk-eu-jms" secondAttribute="bottom" id="T0e-d9-YKm"/>
                             <constraint firstItem="dPP-nk-tJU" firstAttribute="top" secondItem="dz9-Vg-6zw" secondAttribute="bottom" id="W8t-Mt-OBz"/>
                             <constraint firstItem="qdk-eu-jms" firstAttribute="leading" secondItem="b6L-Zm-Wgh" secondAttribute="leading" id="X01-MT-xkP"/>
                             <constraint firstItem="l5f-rf-DLu" firstAttribute="top" secondItem="dz9-Vg-6zw" secondAttribute="bottom" id="Y6k-ad-Mz3"/>
                             <constraint firstAttribute="trailing" secondItem="dPP-nk-tJU" secondAttribute="trailing" id="bUT-Ku-CZc"/>
+                            <constraint firstAttribute="trailing" secondItem="OGM-ul-GSi" secondAttribute="trailing" id="cH3-c3-tmK"/>
+                            <constraint firstItem="OGM-ul-GSi" firstAttribute="leading" secondItem="b6L-Zm-Wgh" secondAttribute="leading" id="jyT-m4-hsU"/>
                             <constraint firstItem="qdk-eu-jms" firstAttribute="top" secondItem="l5f-rf-DLu" secondAttribute="bottom" constant="5" id="p4c-FQ-Ubx"/>
                             <constraint firstItem="dPP-nk-tJU" firstAttribute="leading" secondItem="b6L-Zm-Wgh" secondAttribute="leading" id="qLT-xY-Z8l"/>
                             <constraint firstItem="kzs-aH-zTS" firstAttribute="top" secondItem="dPP-nk-tJU" secondAttribute="bottom" id="vSb-pc-5ky"/>
@@ -132,6 +142,7 @@
                         <outlet property="buttonsStackViewHeightConstraint" destination="jsP-dN-gpD" id="v7X-CW-Fl2"/>
                         <outlet property="cameraButton" destination="Igh-xw-aT0" id="Y1k-fP-GSI"/>
                         <outlet property="collectionView" destination="l5f-rf-DLu" id="cZ5-Mq-bJg"/>
+                        <outlet property="filtersContainerView" destination="OGM-ul-GSi" id="X3Y-fX-xlo"/>
                         <outlet property="signOutButton" destination="3bq-Wb-Do3" id="2Ty-iD-vaR"/>
                     </connections>
                 </viewController>
@@ -314,6 +325,125 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="D96-c5-4b1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="666" y="-115"/>
+        </scene>
+        <!--Filters Container View-->
+        <scene sceneID="0l2-lj-6DT">
+            <objects>
+                <viewController id="HoH-U9-9is" customClass="FiltersContainerView" customModule="ImageSharingDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="a9c-jA-DfE">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Udh-5T-vbL">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="486"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </imageView>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Kp4-zV-Wr4">
+                                <rect key="frame" x="0.0" y="487" width="320" height="40"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="Atb-67-xHg"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="1" id="Dyi-NR-Xeu">
+                                    <size key="itemSize" width="160" height="40"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="FilterCell" id="6dj-ro-7Gg" customClass="FilterCell" customModule="ImageSharingDemo" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="160" height="40"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="160" height="40"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sepia" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w4C-3G-FNR" userLabel="Filter name">
+                                                    <rect key="frame" x="10" y="10" width="140" height="21"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                                    <color key="textColor" red="1" green="0.5058823823928833" blue="0.40392157435417175" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstItem="w4C-3G-FNR" firstAttribute="leading" secondItem="6dj-ro-7Gg" secondAttribute="leading" constant="10" id="8c8-WW-9Sf"/>
+                                            <constraint firstAttribute="trailing" secondItem="w4C-3G-FNR" secondAttribute="trailing" constant="10" id="fqk-fD-jah"/>
+                                            <constraint firstItem="w4C-3G-FNR" firstAttribute="top" secondItem="6dj-ro-7Gg" secondAttribute="top" constant="10" id="rE2-ri-FZR"/>
+                                            <constraint firstAttribute="bottom" secondItem="w4C-3G-FNR" secondAttribute="bottom" constant="9" id="sxp-rK-RWh"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="filterName" destination="w4C-3G-FNR" id="fze-RW-IIQ"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="HoH-U9-9is" id="8Gt-yi-MKg"/>
+                                    <outlet property="delegate" destination="HoH-U9-9is" id="qrq-Jd-tFx"/>
+                                </connections>
+                            </collectionView>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="Udf-xt-eQP" userLabel="Buttons Stack View">
+                                <rect key="frame" x="0.0" y="528" width="320" height="40"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uyn-Wm-8q0" userLabel="Cancel button">
+                                        <rect key="frame" x="0.0" y="0.0" width="83" height="40"/>
+                                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                        <state key="normal" title="Cancel">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="inB-Xc-uk6" userLabel="Original image button">
+                                        <rect key="frame" x="84" y="0.0" width="170" height="40"/>
+                                        <color key="backgroundColor" red="1" green="0.5058823823928833" blue="0.40392157435417175" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                        <state key="normal" title="Original image">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jN4-nC-gje" userLabel="Send button">
+                                        <rect key="frame" x="255" y="0.0" width="65" height="40"/>
+                                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                        <state key="normal" title="Send">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="RHh-Pb-bKg"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.96078431606292725" green="0.95686274766921997" blue="0.95686274766921997" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="Kp4-zV-Wr4" firstAttribute="leading" secondItem="a9c-jA-DfE" secondAttribute="leading" id="2LA-Mi-afR"/>
+                            <constraint firstAttribute="trailing" secondItem="Udh-5T-vbL" secondAttribute="trailing" id="4Zz-yT-HIg"/>
+                            <constraint firstItem="Udf-xt-eQP" firstAttribute="leading" secondItem="a9c-jA-DfE" secondAttribute="leading" id="IO3-gX-kwj"/>
+                            <constraint firstAttribute="trailing" secondItem="Udf-xt-eQP" secondAttribute="trailing" id="Pom-SL-pF5"/>
+                            <constraint firstItem="Kp4-zV-Wr4" firstAttribute="top" secondItem="Udh-5T-vbL" secondAttribute="bottom" constant="1" id="WnE-Ij-Pht"/>
+                            <constraint firstAttribute="trailing" secondItem="Kp4-zV-Wr4" secondAttribute="trailing" id="ZZP-JL-DP2"/>
+                            <constraint firstItem="Udh-5T-vbL" firstAttribute="leading" secondItem="a9c-jA-DfE" secondAttribute="leading" id="bSa-1y-t6C"/>
+                            <constraint firstItem="Udf-xt-eQP" firstAttribute="top" secondItem="Kp4-zV-Wr4" secondAttribute="bottom" constant="1" id="exW-kN-iBl"/>
+                            <constraint firstItem="Udh-5T-vbL" firstAttribute="top" secondItem="a9c-jA-DfE" secondAttribute="top" id="fLd-o5-cV2"/>
+                            <constraint firstAttribute="bottom" secondItem="Udf-xt-eQP" secondAttribute="bottom" id="p5L-sm-Je1"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="buttonsStackViewHeightConstraint" destination="RHh-Pb-bKg" id="ajq-bN-Ouj"/>
+                        <outlet property="cancelButton" destination="uyn-Wm-8q0" id="ZRL-s2-UYM"/>
+                        <outlet property="collectionViewHeightConstraint" destination="Atb-67-xHg" id="8XX-TN-Ljp"/>
+                        <outlet property="imageView" destination="Udh-5T-vbL" id="V51-NC-6dZ"/>
+                        <outlet property="originalImageButton" destination="inB-Xc-uk6" id="sN3-lg-JV7"/>
+                        <outlet property="sendButton" destination="jN4-nC-gje" id="CtG-mb-KmN"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Wjh-1R-RfY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="666" y="1294"/>
         </scene>
     </scenes>
 </document>
