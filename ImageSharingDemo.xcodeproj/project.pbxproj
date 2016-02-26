@@ -25,6 +25,7 @@
 		20266BF81C809B090017C967 /* PickImage_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20266BF71C809B090017C967 /* PickImage_VC.swift */; };
 		20266BFB1C809B250017C967 /* coconut-palm.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 20266BF91C809B250017C967 /* coconut-palm.jpg */; };
 		20266BFD1C809B980017C967 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 20266BFC1C809B980017C967 /* Podfile */; };
+		20266BFF1C80A16C0017C967 /* notification.caf in Resources */ = {isa = PBXBuildFile; fileRef = 20266BFE1C80A16C0017C967 /* notification.caf */; };
 		B2C829DAD2703F334072CD0E /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 50925EF949B80F47C44FE795 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -63,6 +64,7 @@
 		20266BF91C809B250017C967 /* coconut-palm.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "coconut-palm.jpg"; sourceTree = "<group>"; };
 		20266BFA1C809B250017C967 /* BridgingHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BridgingHeader.h; sourceTree = "<group>"; };
 		20266BFC1C809B980017C967 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
+		20266BFE1C80A16C0017C967 /* notification.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = notification.caf; sourceTree = "<group>"; };
 		50925EF949B80F47C44FE795 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		941620D319731A964B8ACDB3 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -123,6 +125,7 @@
 				20266BC81C8098A30017C967 /* LaunchScreen.storyboard */,
 				20266BF91C809B250017C967 /* coconut-palm.jpg */,
 				20266BFA1C809B250017C967 /* BridgingHeader.h */,
+				20266BFE1C80A16C0017C967 /* notification.caf */,
 				20266BCB1C8098A30017C967 /* Info.plist */,
 			);
 			path = ImageSharingDemo;
@@ -299,6 +302,7 @@
 				20266BFD1C809B980017C967 /* Podfile in Resources */,
 				20266BCA1C8098A30017C967 /* LaunchScreen.storyboard in Resources */,
 				20266BFB1C809B250017C967 /* coconut-palm.jpg in Resources */,
+				20266BFF1C80A16C0017C967 /* notification.caf in Resources */,
 				20266BC71C8098A30017C967 /* Assets.xcassets in Resources */,
 				20266BC51C8098A30017C967 /* Main.storyboard in Resources */,
 			);

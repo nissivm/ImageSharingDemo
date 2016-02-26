@@ -66,8 +66,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func sendPushNotification(entityId: String, completion:(status: String) -> Void)
     {
         let params = ["contents": ["en": "New photo!"],
-                      "tags": ["key": "RegisteredForPushes", "relation": "=", "value": "true"],
-                      "data": ["EntityId": entityId]]
+                          "tags": ["key": "RegisteredForPushes", "relation": "=", "value": "true"],
+                 "ios_badgeType": "Increase",
+                "ios_badgeCount": 1,
+                     "ios_sound": "notification.caf",
+                          "data": ["EntityId": entityId]]
         
         oneSignal.postNotification(params,
             onSuccess: {(result) in
