@@ -1,0 +1,16 @@
+PODS:
+  - KinveyKit (1.40.4)
+  - MBProgressHUD (0.9.2)
+  - OneSignal (1.11.0)
+
+DEPENDENCIES:
+  - KinveyKit
+  - MBProgressHUD (~> 0.9.2)
+  - OneSignal
+
+SPEC CHECKSUMS:
+  KinveyKit: 07e34a2c4592482db84599726fb4f566f25c6343
+  MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
+  OneSignal: 85d4e842b26d1a6492efa9c3ecf3b38151339f8e
+
+COCOAPODS: 0.39.0

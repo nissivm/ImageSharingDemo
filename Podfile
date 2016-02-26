@@ -1,0 +1,7 @@
+source 'https://github.com/CocoaPods/Specs.git'
+platform :ios, '9.0'
+xcodeproj '/Users/nissivieiramiranda/Documents/Nissi_iOS_Apps/GitHub projects/Image Sharing Demo/ImageSharingDemo/ImageSharingDemo.xcodeproj'
+pod 'KinveyKit'
+pod 'OneSignal'
+pod 'MBProgressHUD', '~> 0.9.2'
+link_with 'ImageSharingDemo'

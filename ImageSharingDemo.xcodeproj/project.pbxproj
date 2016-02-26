@@ -13,6 +13,19 @@
 		20266BC71C8098A30017C967 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20266BC61C8098A30017C967 /* Assets.xcassets */; };
 		20266BCA1C8098A30017C967 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20266BC81C8098A30017C967 /* LaunchScreen.storyboard */; };
 		20266BD51C8098A30017C967 /* ImageSharingDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20266BD41C8098A30017C967 /* ImageSharingDemoTests.swift */; };
+		20266BE61C809ABF0017C967 /* AuthenticationContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20266BE51C809ABF0017C967 /* AuthenticationContainerView.swift */; };
+		20266BE81C809AD50017C967 /* ImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20266BE71C809AD50017C967 /* ImageCell.swift */; };
+		20266BEA1C809AE20017C967 /* KinveyBackend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20266BE91C809AE20017C967 /* KinveyBackend.swift */; };
+		20266BEC1C809AEB0017C967 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20266BEB1C809AEB0017C967 /* Image.swift */; };
+		20266BF21C809AF50017C967 /* Auxiliar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20266BED1C809AF50017C967 /* Auxiliar.swift */; };
+		20266BF31C809AF50017C967 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20266BEE1C809AF50017C967 /* Constants.swift */; };
+		20266BF41C809AF50017C967 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20266BEF1C809AF50017C967 /* Device.swift */; };
+		20266BF51C809AF50017C967 /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20266BF01C809AF50017C967 /* Filter.swift */; };
+		20266BF61C809AF50017C967 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20266BF11C809AF50017C967 /* Reachability.swift */; };
+		20266BF81C809B090017C967 /* PickImage_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20266BF71C809B090017C967 /* PickImage_VC.swift */; };
+		20266BFB1C809B250017C967 /* coconut-palm.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 20266BF91C809B250017C967 /* coconut-palm.jpg */; };
+		20266BFD1C809B980017C967 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 20266BFC1C809B980017C967 /* Podfile */; };
+		B2C829DAD2703F334072CD0E /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 50925EF949B80F47C44FE795 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -26,6 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1F66F7FC4FD45DA9BA894C41 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		20266BBC1C8098A30017C967 /* ImageSharingDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImageSharingDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		20266BBF1C8098A30017C967 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		20266BC11C8098A30017C967 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -36,6 +50,21 @@
 		20266BD01C8098A30017C967 /* ImageSharingDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ImageSharingDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		20266BD41C8098A30017C967 /* ImageSharingDemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSharingDemoTests.swift; sourceTree = "<group>"; };
 		20266BD61C8098A30017C967 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		20266BE51C809ABF0017C967 /* AuthenticationContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AuthenticationContainerView.swift; path = "Container views/AuthenticationContainerView.swift"; sourceTree = "<group>"; };
+		20266BE71C809AD50017C967 /* ImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageCell.swift; path = "Custom cells/ImageCell.swift"; sourceTree = "<group>"; };
+		20266BE91C809AE20017C967 /* KinveyBackend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KinveyBackend.swift; path = "Kinvey Backend/KinveyBackend.swift"; sourceTree = "<group>"; };
+		20266BEB1C809AEB0017C967 /* Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Image.swift; path = "Kinvey classes/Image.swift"; sourceTree = "<group>"; };
+		20266BED1C809AF50017C967 /* Auxiliar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Auxiliar.swift; path = Objects/Auxiliar.swift; sourceTree = "<group>"; };
+		20266BEE1C809AF50017C967 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = Objects/Constants.swift; sourceTree = "<group>"; };
+		20266BEF1C809AF50017C967 /* Device.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Device.swift; path = Objects/Device.swift; sourceTree = "<group>"; };
+		20266BF01C809AF50017C967 /* Filter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Filter.swift; path = Objects/Filter.swift; sourceTree = "<group>"; };
+		20266BF11C809AF50017C967 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Reachability.swift; path = Objects/Reachability.swift; sourceTree = "<group>"; };
+		20266BF71C809B090017C967 /* PickImage_VC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PickImage_VC.swift; path = "View controllers/PickImage_VC.swift"; sourceTree = "<group>"; };
+		20266BF91C809B250017C967 /* coconut-palm.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "coconut-palm.jpg"; sourceTree = "<group>"; };
+		20266BFA1C809B250017C967 /* BridgingHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BridgingHeader.h; sourceTree = "<group>"; };
+		20266BFC1C809B980017C967 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
+		50925EF949B80F47C44FE795 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		941620D319731A964B8ACDB3 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +72,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B2C829DAD2703F334072CD0E /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,9 +89,12 @@
 		20266BB31C8098A30017C967 = {
 			isa = PBXGroup;
 			children = (
+				20266BFC1C809B980017C967 /* Podfile */,
 				20266BBE1C8098A30017C967 /* ImageSharingDemo */,
 				20266BD31C8098A30017C967 /* ImageSharingDemoTests */,
 				20266BBD1C8098A30017C967 /* Products */,
+				207E10368046BC5ECE374E4E /* Pods */,
+				413176EDD84A3AA40A5A9038 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -77,11 +110,19 @@
 		20266BBE1C8098A30017C967 /* ImageSharingDemo */ = {
 			isa = PBXGroup;
 			children = (
+				20266BE41C809A880017C967 /* Container views */,
+				20266BE31C809A7D0017C967 /* Custom cells */,
+				20266BE21C809A6C0017C967 /* Kinvey Backend */,
+				20266BE11C809A5F0017C967 /* Kinvey classes */,
+				20266BE01C809A530017C967 /* Objects */,
+				20266BDF1C809A420017C967 /* View controllers */,
 				20266BBF1C8098A30017C967 /* AppDelegate.swift */,
 				20266BC11C8098A30017C967 /* ViewController.swift */,
 				20266BC31C8098A30017C967 /* Main.storyboard */,
 				20266BC61C8098A30017C967 /* Assets.xcassets */,
 				20266BC81C8098A30017C967 /* LaunchScreen.storyboard */,
+				20266BF91C809B250017C967 /* coconut-palm.jpg */,
+				20266BFA1C809B250017C967 /* BridgingHeader.h */,
 				20266BCB1C8098A30017C967 /* Info.plist */,
 			);
 			path = ImageSharingDemo;
@@ -96,6 +137,75 @@
 			path = ImageSharingDemoTests;
 			sourceTree = "<group>";
 		};
+		20266BDF1C809A420017C967 /* View controllers */ = {
+			isa = PBXGroup;
+			children = (
+				20266BF71C809B090017C967 /* PickImage_VC.swift */,
+			);
+			name = "View controllers";
+			sourceTree = "<group>";
+		};
+		20266BE01C809A530017C967 /* Objects */ = {
+			isa = PBXGroup;
+			children = (
+				20266BED1C809AF50017C967 /* Auxiliar.swift */,
+				20266BEE1C809AF50017C967 /* Constants.swift */,
+				20266BEF1C809AF50017C967 /* Device.swift */,
+				20266BF01C809AF50017C967 /* Filter.swift */,
+				20266BF11C809AF50017C967 /* Reachability.swift */,
+			);
+			name = Objects;
+			sourceTree = "<group>";
+		};
+		20266BE11C809A5F0017C967 /* Kinvey classes */ = {
+			isa = PBXGroup;
+			children = (
+				20266BEB1C809AEB0017C967 /* Image.swift */,
+			);
+			name = "Kinvey classes";
+			sourceTree = "<group>";
+		};
+		20266BE21C809A6C0017C967 /* Kinvey Backend */ = {
+			isa = PBXGroup;
+			children = (
+				20266BE91C809AE20017C967 /* KinveyBackend.swift */,
+			);
+			name = "Kinvey Backend";
+			sourceTree = "<group>";
+		};
+		20266BE31C809A7D0017C967 /* Custom cells */ = {
+			isa = PBXGroup;
+			children = (
+				20266BE71C809AD50017C967 /* ImageCell.swift */,
+			);
+			name = "Custom cells";
+			sourceTree = "<group>";
+		};
+		20266BE41C809A880017C967 /* Container views */ = {
+			isa = PBXGroup;
+			children = (
+				20266BE51C809ABF0017C967 /* AuthenticationContainerView.swift */,
+			);
+			name = "Container views";
+			sourceTree = "<group>";
+		};
+		207E10368046BC5ECE374E4E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1F66F7FC4FD45DA9BA894C41 /* Pods.debug.xcconfig */,
+				941620D319731A964B8ACDB3 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		413176EDD84A3AA40A5A9038 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				50925EF949B80F47C44FE795 /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -103,9 +213,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 20266BD91C8098A30017C967 /* Build configuration list for PBXNativeTarget "ImageSharingDemo" */;
 			buildPhases = (
+				48D8902583A8A6249E828193 /* Check Pods Manifest.lock */,
 				20266BB81C8098A30017C967 /* Sources */,
 				20266BB91C8098A30017C967 /* Frameworks */,
 				20266BBA1C8098A30017C967 /* Resources */,
+				D6D472D8D2E6A3AED9967C42 /* Embed Pods Frameworks */,
+				2087FB5DC63B345A746DDE72 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -146,6 +259,12 @@
 				TargetAttributes = {
 					20266BBB1C8098A30017C967 = {
 						CreatedOnToolsVersion = 7.2.1;
+						DevelopmentTeam = LN34JK9Z78;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					20266BCF1C8098A30017C967 = {
 						CreatedOnToolsVersion = 7.2.1;
@@ -177,7 +296,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20266BFD1C809B980017C967 /* Podfile in Resources */,
 				20266BCA1C8098A30017C967 /* LaunchScreen.storyboard in Resources */,
+				20266BFB1C809B250017C967 /* coconut-palm.jpg in Resources */,
 				20266BC71C8098A30017C967 /* Assets.xcassets in Resources */,
 				20266BC51C8098A30017C967 /* Main.storyboard in Resources */,
 			);
@@ -192,13 +313,71 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		2087FB5DC63B345A746DDE72 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		48D8902583A8A6249E828193 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		D6D472D8D2E6A3AED9967C42 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		20266BB81C8098A30017C967 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20266BE61C809ABF0017C967 /* AuthenticationContainerView.swift in Sources */,
+				20266BF51C809AF50017C967 /* Filter.swift in Sources */,
+				20266BEC1C809AEB0017C967 /* Image.swift in Sources */,
+				20266BE81C809AD50017C967 /* ImageCell.swift in Sources */,
+				20266BF41C809AF50017C967 /* Device.swift in Sources */,
+				20266BEA1C809AE20017C967 /* KinveyBackend.swift in Sources */,
 				20266BC21C8098A30017C967 /* ViewController.swift in Sources */,
+				20266BF81C809B090017C967 /* PickImage_VC.swift in Sources */,
+				20266BF61C809AF50017C967 /* Reachability.swift in Sources */,
 				20266BC01C8098A30017C967 /* AppDelegate.swift in Sources */,
+				20266BF21C809AF50017C967 /* Auxiliar.swift in Sources */,
+				20266BF31C809AF50017C967 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -257,7 +436,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Nissi Vieira Miranda (GHTXK5PX2T)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Nissi Vieira Miranda (GHTXK5PX2T)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -279,6 +459,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "aa4677b2-b41f-4d91-a62c-9ddfaabd32af";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -301,7 +482,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Nissi Vieira Miranda (GHTXK5PX2T)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Nissi Vieira Miranda (GHTXK5PX2T)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -316,6 +498,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PROVISIONING_PROFILE = "aa4677b2-b41f-4d91-a62c-9ddfaabd32af";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -323,23 +506,31 @@
 		};
 		20266BDA1C8098A30017C967 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1F66F7FC4FD45DA9BA894C41 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = ImageSharingDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.appmagic.ImageSharingDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "aa4677b2-b41f-4d91-a62c-9ddfaabd32af";
+				SWIFT_OBJC_BRIDGING_HEADER = ImageSharingDemo/BridgingHeader.h;
 			};
 			name = Debug;
 		};
 		20266BDB1C8098A30017C967 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 941620D319731A964B8ACDB3 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = ImageSharingDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.appmagic.ImageSharingDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "aa4677b2-b41f-4d91-a62c-9ddfaabd32af";
+				SWIFT_OBJC_BRIDGING_HEADER = ImageSharingDemo/BridgingHeader.h;
 			};
 			name = Release;
 		};
@@ -386,6 +577,7 @@
 				20266BDB1C8098A30017C967 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		20266BDC1C8098A30017C967 /* Build configuration list for PBXNativeTarget "ImageSharingDemoTests" */ = {
 			isa = XCConfigurationList;
@@ -394,6 +586,7 @@
 				20266BDE1C8098A30017C967 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
