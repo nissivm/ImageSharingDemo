@@ -1,1 +1,1 @@
-../../../KinveyKit/KinveyKit-1.40.4/include/KinveyKit/CLLocation+Kinvey.h
+../../../KinveyKit/KinveyKit-1.40.5/include/KinveyKit/CLLocation+Kinvey.h

@@ -32,7 +32,7 @@
 		14E29CBCFA63323AF6CA22F69933911C /* OneSignal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OneSignal.framework; path = iOS_SDK/Framework/OneSignal.framework; sourceTree = "<group>"; };
 		272643F56613CA0D336AE3DBF19DC404 /* Pods-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-dummy.m"; sourceTree = "<group>"; };
 		37DB56D75062CC75FCB0966E1C6E8A8E /* Pods-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-acknowledgements.markdown"; sourceTree = "<group>"; };
-		4C2E9E95C37F3FAD864F30C63762CAC7 /* libKinveyKit.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libKinveyKit.a; path = "KinveyKit-1.40.4/libKinveyKit.a"; sourceTree = "<group>"; };
+		4D470CDE4EF8FC7BE6ED95EB18287E26 /* libKinveyKit.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libKinveyKit.a; path = "KinveyKit-1.40.5/libKinveyKit.a"; sourceTree = "<group>"; };
 		4E762F23EC34ED4A6FF3312D84E33A40 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Pods.debug.xcconfig; sourceTree = "<group>"; };
 		6911BECA35E7518D864239B7E898EEF3 /* Pods-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-frameworks.sh"; sourceTree = "<group>"; };
 		6E093D627869B650AB8D6411D2DE6B7A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
@@ -75,6 +75,14 @@
 				B3D1D13E0C6553800746CB8FD61CF946 /* Pods */,
 			);
 			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		30691F36D0E30165EFABB85BFA4A4BDE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4D470CDE4EF8FC7BE6ED95EB18287E26 /* libKinveyKit.a */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		36C06A02A00144C64CD7282BA31846BD /* iOS */ = {
@@ -124,17 +132,9 @@
 		6AAF8DB1400F053A772F15461DFE52F1 /* KinveyKit */ = {
 			isa = PBXGroup;
 			children = (
-				71775084A80C1241F41992B7413D49DB /* Frameworks */,
+				30691F36D0E30165EFABB85BFA4A4BDE /* Frameworks */,
 			);
 			path = KinveyKit;
-			sourceTree = "<group>";
-		};
-		71775084A80C1241F41992B7413D49DB /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				4C2E9E95C37F3FAD864F30C63762CAC7 /* libKinveyKit.a */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		7B638750B73D0D80C493B45CDF601A46 /* Support Files */ = {

@@ -1,7 +1,7 @@
 FRAMEWORK_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/OneSignal/iOS_SDK/Framework"
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
 HEADER_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/KinveyKit" "${PODS_ROOT}/Headers/Public/MBProgressHUD" "${PODS_ROOT}/Headers/Public/OneSignal"
-LIBRARY_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/KinveyKit/KinveyKit-1.40.4"
+LIBRARY_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/KinveyKit/KinveyKit-1.40.5"
 OTHER_CFLAGS = $(inherited) -isystem "${PODS_ROOT}/Headers/Public" -isystem "${PODS_ROOT}/Headers/Public/KinveyKit" -isystem "${PODS_ROOT}/Headers/Public/MBProgressHUD" -isystem "${PODS_ROOT}/Headers/Public/OneSignal"
 OTHER_LDFLAGS = $(inherited) -ObjC -l"KinveyKit" -l"MBProgressHUD" -l"sqlite3" -framework "Accounts" -framework "CoreGraphics" -framework "CoreLocation" -framework "MobileCoreServices" -framework "OneSignal" -framework "Security" -framework "Social" -framework "SystemConfiguration" -weak_framework "WebKit"
 PODS_ROOT = ${SRCROOT}/Pods
