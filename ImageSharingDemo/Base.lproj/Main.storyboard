@@ -17,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="l5f-rf-DLu">
+                            <collectionView clipsSubviews="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="l5f-rf-DLu">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="523"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="0.0" id="rhN-wl-o1G">
@@ -56,13 +56,13 @@
                                     <outlet property="delegate" destination="apK-1V-y78" id="1ja-Ec-XQx"/>
                                 </connections>
                             </collectionView>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="qdk-eu-jms" userLabel="Buttons Stack View">
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="qdk-eu-jms" userLabel="Buttons Stack View">
                                 <rect key="frame" x="0.0" y="528" width="320" height="40"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Cg-pC-DjO" userLabel="Album button">
-                                        <rect key="frame" x="0.0" y="0.0" width="106" height="40"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="75" height="40"/>
                                         <color key="backgroundColor" red="1" green="0.5058823823928833" blue="0.40392157435417175" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                                         <state key="normal" title="Album">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -71,9 +71,9 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Igh-xw-aT0" userLabel="Camera Button">
-                                        <rect key="frame" x="107" y="0.0" width="106" height="40"/>
+                                        <rect key="frame" x="76" y="0.0" width="90" height="40"/>
                                         <color key="backgroundColor" red="1" green="0.50588238240000005" blue="0.40392157439999998" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                                         <state key="normal" title="Camera">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -82,14 +82,25 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3bq-Wb-Do3" userLabel="Sign out Button">
-                                        <rect key="frame" x="214" y="0.0" width="106" height="40"/>
+                                        <rect key="frame" x="167" y="0.0" width="95" height="40"/>
                                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                                         <state key="normal" title="Sign out">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
                                             <action selector="signOutButtonTapped:" destination="apK-1V-y78" eventType="touchUpInside" id="Tft-R7-TH3"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nmU-0e-o4Y" userLabel="New images button">
+                                        <rect key="frame" x="263" y="0.0" width="57" height="40"/>
+                                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
+                                        <state key="normal" title="New">
+                                            <color key="titleColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="newImagesButtonTapped:" destination="apK-1V-y78" eventType="touchUpInside" id="Jyx-gP-1zw"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -143,6 +154,7 @@
                         <outlet property="cameraButton" destination="Igh-xw-aT0" id="Y1k-fP-GSI"/>
                         <outlet property="collectionView" destination="l5f-rf-DLu" id="cZ5-Mq-bJg"/>
                         <outlet property="filtersContainerView" destination="OGM-ul-GSi" id="X3Y-fX-xlo"/>
+                        <outlet property="newImagesButton" destination="nmU-0e-o4Y" id="2Hl-F2-Ijb"/>
                         <outlet property="signOutButton" destination="3bq-Wb-Do3" id="2Ty-iD-vaR"/>
                     </connections>
                 </viewController>
@@ -330,6 +342,10 @@
         <scene sceneID="0l2-lj-6DT">
             <objects>
                 <viewController id="HoH-U9-9is" customClass="FiltersContainerView" customModule="ImageSharingDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="pWg-Yv-PpS"/>
+                        <viewControllerLayoutGuide type="bottom" id="df8-J1-twV"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="a9c-jA-DfE">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -338,7 +354,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="486"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </imageView>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Kp4-zV-Wr4">
+                            <collectionView clipsSubviews="YES" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Kp4-zV-Wr4">
                                 <rect key="frame" x="0.0" y="487" width="320" height="40"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -384,32 +400,41 @@
                                     <outlet property="delegate" destination="HoH-U9-9is" id="qrq-Jd-tFx"/>
                                 </connections>
                             </collectionView>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="Udf-xt-eQP" userLabel="Buttons Stack View">
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="Udf-xt-eQP" userLabel="Buttons Stack View">
                                 <rect key="frame" x="0.0" y="528" width="320" height="40"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uyn-Wm-8q0" userLabel="Cancel button">
-                                        <rect key="frame" x="0.0" y="0.0" width="83" height="40"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="106" height="40"/>
                                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                                         <state key="normal" title="Cancel">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="cancelButtonTapped:" destination="HoH-U9-9is" eventType="touchUpInside" id="LXx-0L-Nrr"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="inB-Xc-uk6" userLabel="Original image button">
-                                        <rect key="frame" x="84" y="0.0" width="170" height="40"/>
+                                        <rect key="frame" x="107" y="0.0" width="106" height="40"/>
                                         <color key="backgroundColor" red="1" green="0.5058823823928833" blue="0.40392157435417175" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
-                                        <state key="normal" title="Original image">
+                                        <state key="normal" title="Original">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="originalImageButtonTapped:" destination="HoH-U9-9is" eventType="touchUpInside" id="XIv-kc-m2s"/>
+                                        </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jN4-nC-gje" userLabel="Send button">
-                                        <rect key="frame" x="255" y="0.0" width="65" height="40"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jN4-nC-gje" userLabel="Share button">
+                                        <rect key="frame" x="214" y="0.0" width="106" height="40"/>
                                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
-                                        <state key="normal" title="Send">
+                                        <state key="normal" title="Share">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="shareButtonTapped:" destination="HoH-U9-9is" eventType="touchUpInside" id="GDi-UU-mgB"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -438,7 +463,7 @@
                         <outlet property="collectionViewHeightConstraint" destination="Atb-67-xHg" id="8XX-TN-Ljp"/>
                         <outlet property="imageView" destination="Udh-5T-vbL" id="V51-NC-6dZ"/>
                         <outlet property="originalImageButton" destination="inB-Xc-uk6" id="sN3-lg-JV7"/>
-                        <outlet property="sendButton" destination="jN4-nC-gje" id="CtG-mb-KmN"/>
+                        <outlet property="shareButton" destination="jN4-nC-gje" id="zpH-kE-LJQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wjh-1R-RfY" userLabel="First Responder" sceneMemberID="firstResponder"/>

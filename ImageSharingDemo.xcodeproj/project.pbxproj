@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		20266BC01C8098A30017C967 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20266BBF1C8098A30017C967 /* AppDelegate.swift */; };
-		20266BC21C8098A30017C967 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20266BC11C8098A30017C967 /* ViewController.swift */; };
 		20266BC51C8098A30017C967 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20266BC31C8098A30017C967 /* Main.storyboard */; };
 		20266BC71C8098A30017C967 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20266BC61C8098A30017C967 /* Assets.xcassets */; };
 		20266BCA1C8098A30017C967 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20266BC81C8098A30017C967 /* LaunchScreen.storyboard */; };
@@ -45,7 +44,6 @@
 		1F66F7FC4FD45DA9BA894C41 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		20266BBC1C8098A30017C967 /* ImageSharingDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImageSharingDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		20266BBF1C8098A30017C967 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		20266BC11C8098A30017C967 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		20266BC41C8098A30017C967 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		20266BC61C8098A30017C967 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		20266BC91C8098A30017C967 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -123,7 +121,6 @@
 				20266BE01C809A530017C967 /* Objects */,
 				20266BDF1C809A420017C967 /* View controllers */,
 				20266BBF1C8098A30017C967 /* AppDelegate.swift */,
-				20266BC11C8098A30017C967 /* ViewController.swift */,
 				20266BC31C8098A30017C967 /* Main.storyboard */,
 				20266BC61C8098A30017C967 /* Assets.xcassets */,
 				20266BC81C8098A30017C967 /* LaunchScreen.storyboard */,
@@ -382,7 +379,6 @@
 				20266BE81C809AD50017C967 /* ImageCell.swift in Sources */,
 				20266BF41C809AF50017C967 /* Device.swift in Sources */,
 				20266BEA1C809AE20017C967 /* KinveyBackend.swift in Sources */,
-				20266BC21C8098A30017C967 /* ViewController.swift in Sources */,
 				20266C031C80F15B0017C967 /* FilterCell.swift in Sources */,
 				20266BF81C809B090017C967 /* PickImage_VC.swift in Sources */,
 				20266BF61C809AF50017C967 /* Reachability.swift in Sources */,

@@ -119,7 +119,7 @@ class KinveyBackend
     }
     
     //-------------------------------------------------------------------------//
-    // MARK: Fetching from Images collection
+    // MARK: Fetches images using a query
     //-------------------------------------------------------------------------//
     
     var skip: Int = 0
@@ -164,6 +164,81 @@ class KinveyBackend
                 {
                     completion(status: "No results", objects: nil)
                 }
+            },
+            withProgressBlock: nil
+        )
+    }
+    
+    //-------------------------------------------------------------------------//
+    // MARK: Fetches images using their ids
+    //-------------------------------------------------------------------------//
+    
+    func fetchNewImages(entitiesIds: [String],
+        completion:(status: String, fetchedImages: [Image]?) -> Void)
+    {
+        let store = KCSLinkedAppdataStore.storeWithOptions([
+            KCSStoreKeyCollectionName : "Images",
+            KCSStoreKeyCollectionTemplateClass : Image.self
+            ])
+        
+        store.loadObjectWithID(entitiesIds,
+            withCompletionBlock: {
+                
+                (objectsOrNil, errorOrNil) -> Void in
+                
+                guard errorOrNil == nil else
+                {
+                    completion(status: "Error", fetchedImages: nil)
+                    return
+                }
+                
+                guard let results = objectsOrNil as? [Image] else
+                {
+                    completion(status: "Error", fetchedImages: nil)
+                    return
+                }
+                
+                completion(status: "Success", fetchedImages: results)
+            },
+            withProgressBlock: nil
+        )
+    }
+    
+    //-------------------------------------------------------------------------//
+    // MARK: Saves an image to the backend
+    //-------------------------------------------------------------------------//
+    
+    func saveImage(imageToSave: UIImage,
+        completion:(status: String, savedImg: Image?, errorMessage: String) -> Void)
+    {
+        let image = Image()
+            image.image = imageToSave
+            image.date = NSDate()
+        
+        let store = KCSLinkedAppdataStore.storeWithOptions([
+            KCSStoreKeyCollectionName : "Images",
+            KCSStoreKeyCollectionTemplateClass : Image.self
+            ])
+        
+        store.saveObject(image,
+            withCompletionBlock: {
+                
+                (objectsOrNil, errorOrNil) -> Void in
+                
+                guard errorOrNil == nil else
+                {
+                    completion(status: "Error", savedImg: nil, errorMessage: "Error saving image")
+                    return
+                }
+                
+                guard let results = objectsOrNil as? [Image] else
+                {
+                    completion(status: "Error", savedImg: nil, errorMessage: "Error saving image")
+                    return
+                }
+                
+                let savedImg = results[0]
+                completion(status: "Success", savedImg: savedImg, errorMessage: "")
             },
             withProgressBlock: nil
         )

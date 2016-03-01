@@ -20,14 +20,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         oneSignal = OneSignal(launchOptions: launchOptions,
                                       appId: Constants.appId,
-            handleNotification: { // Called when a notification is opened or received while the app is in use.
-            
-                (message, additionalData, isActive) in
-            
-                let entityId = additionalData["EntityId"] as! String
-                NSNotificationCenter.defaultCenter().postNotificationName("NewPhoto", object: entityId)
-            },
-            autoRegister: false)
+                         handleNotification: nil,
+                               autoRegister: false)
         
         // Kinvey initialization:
         
@@ -71,23 +65,48 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
+    //-------------------------------------------------------------------------//
+    // MARK: Sends push notifications
+    //-------------------------------------------------------------------------//
+    
     func sendPushNotification(entityId: String, completion:(status: String) -> Void)
     {
         let params = ["contents": ["en": "New photo!"],
                           "tags": ["key": "RegisteredForPushes", "relation": "=", "value": "true"],
                  "ios_badgeType": "Increase",
                 "ios_badgeCount": 1,
+             "content_available": true,
                      "ios_sound": "notification.caf",
                           "data": ["EntityId": entityId]]
         
         oneSignal.postNotification(params,
-            onSuccess: {(result) in
+            onSuccess: {
+                (result) in
+                print("Push notification sent!")
                 completion(status: "Success")
             },
-            onFailure: {(error) in
+            onFailure: {
+                (error) in
+                print("Error pushing notification.")
                 completion(status: "Error")
             })
     }
+    
+    //-------------------------------------------------------------------------//
+    // MARK: Receives push notifications
+    //-------------------------------------------------------------------------//
+    
+    func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject],
+        fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void)
+    {
+        let entityId = userInfo["EntityId"] as! String
+        Auxiliar.newPhotosIds.append(entityId)
+        NSNotificationCenter.defaultCenter().postNotificationName("NewPhoto", object: nil)
+    }
+    
+    //-------------------------------------------------------------------------//
+    // MARK: Unused
+    //-------------------------------------------------------------------------//
 
     func applicationWillResignActive(application: UIApplication) {}
 

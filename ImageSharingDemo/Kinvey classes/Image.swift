@@ -11,8 +11,8 @@ import Foundation
 class Image : NSObject
 {
     var entityId: String? //Kinvey entity _id
-    var image: UIImage?
-    var date: NSDate?
+    var image: UIImage!
+    var date: NSDate!
     
     override func hostToKinveyPropertyMapping() -> [NSObject : AnyObject]!
     {

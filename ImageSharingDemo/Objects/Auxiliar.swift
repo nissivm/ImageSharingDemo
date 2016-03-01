@@ -10,25 +10,21 @@ import Foundation
 
 class Auxiliar
 {
+    static var newPhotosIds = [String]()
+    
     //-------------------------------------------------------------------------//
     // MARK: MBProgressHUD
     //-------------------------------------------------------------------------//
     
     static func showLoadingHUDWithText(labelText : String, forView view : UIView)
     {
-        dispatch_async(dispatch_get_main_queue())
-        {
-            let progressHud = MBProgressHUD.showHUDAddedTo(view, animated: true)
-                progressHud.labelText = labelText
-        }
+        let progressHud = MBProgressHUD.showHUDAddedTo(view, animated: true)
+            progressHud.labelText = labelText
     }
     
     static func hideLoadingHUDInView(view : UIView)
     {
-        dispatch_async(dispatch_get_main_queue())
-        {
-            MBProgressHUD.hideAllHUDsForView(view, animated: true)
-        }
+        MBProgressHUD.hideAllHUDsForView(view, animated: true)
     }
     
     //-------------------------------------------------------------------------//
@@ -49,9 +45,6 @@ class Auxiliar
         
         alert.addAction(alertAction)
         
-        dispatch_async(dispatch_get_main_queue())
-            {
-                vc.presentViewController(alert, animated: true, completion: nil)
-        }
+        vc.presentViewController(alert, animated: true, completion: nil)
     }
 }

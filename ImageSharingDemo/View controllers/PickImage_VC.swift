@@ -8,12 +8,25 @@
 
 import UIKit
 
+extension UIColor
+{
+    convenience init(red: Int, green: Int, blue: Int)
+    {
+        let newRed = CGFloat(red)/255
+        let newGreen = CGFloat(green)/255
+        let newBlue = CGFloat(blue)/255
+        
+        self.init(red: newRed, green: newGreen, blue: newBlue, alpha: 1.0)
+    }
+}
+
 class PickImage_VC: UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIScrollViewDelegate
 {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var albumButton: UIButton!
     @IBOutlet weak var cameraButton: UIButton!
     @IBOutlet weak var signOutButton: UIButton!
+    @IBOutlet weak var newImagesButton: UIButton!
     @IBOutlet weak var filtersContainerView: UIView!
     @IBOutlet weak var authenticationContainerView: UIView!
     
@@ -34,8 +47,11 @@ class PickImage_VC: UIViewController, UICollectionViewDataSource, UICollectionVi
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "sessionStarted",
                                                                 name: "SessionStarted", object: nil)
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "newPhoto:",
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "newPhoto",
                                                                 name: "NewPhoto", object: nil)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "closeFiltersContainerView:",
+                                                                name: "CloseFiltersContainerView", object: nil)
 
         picker.delegate = self
         prefersStatusBarHidden()
@@ -84,13 +100,36 @@ class PickImage_VC: UIViewController, UICollectionViewDataSource, UICollectionVi
     func sessionStarted()
     {
         authenticationContainerView.hidden = true
-        retrieveImages()
+        
+        if images.count == 0
+        {
+            retrieveImages()
+        }
     }
     
-    func newPhoto(notification: NSNotification)
+    func newPhoto()
     {
-        let entityId = notification.object as! String
-        print("New photo with id = \(entityId)")
+        let newTitle = "New (\(Auxiliar.newPhotosIds.count))"
+        let green = UIColor(red: 42, green: 191, blue: 124)
+        newImagesButton.setTitle(newTitle, forState: .Normal)
+        newImagesButton.setTitleColor(green, forState: .Normal)
+        newImagesButton.enabled = true
+    }
+    
+    var currentUserImagesIds = [String]()
+    
+    func closeFiltersContainerView(notification : NSNotification)
+    {
+        filtersContainerView.hidden = true
+        
+        if notification.object != nil
+        {
+            let savedImg = notification.object as! Image
+            let entityId = savedImg.entityId!
+            currentUserImagesIds.append(entityId)
+            
+            incorporateNewItemsAtBeginning([savedImg])
+        }
     }
     
     //-------------------------------------------------------------------------//
@@ -125,6 +164,97 @@ class PickImage_VC: UIViewController, UICollectionViewDataSource, UICollectionVi
     {
         KCSUser.activeUser().logout()
         authenticationContainerView.hidden = false
+    }
+    
+    @IBAction func newImagesButtonTapped(sender: UIButton)
+    {
+        if newImagesButton.enabled
+        {
+            guard Reachability.connectedToNetwork() else
+            {
+                Auxiliar.presentAlertControllerWithTitle("No Internet Connection",
+                    andMessage: "Make sure your device is connected to the internet.",
+                    forViewController: self)
+                return
+            }
+            
+            Auxiliar.showLoadingHUDWithText("Loading new images...", forView: self.view)
+            filterImagesToRetrieve()
+        }
+    }
+    
+    //-------------------------------------------------------------------------//
+    // MARK: Filter images to retrieve
+    //-------------------------------------------------------------------------//
+    
+    func filterImagesToRetrieve()
+    {
+        if currentUserImagesIds.count == 0
+        {
+            retrieveNewImages(Auxiliar.newPhotosIds)
+        }
+        else
+        {
+            for element in currentUserImagesIds
+            {
+                if Auxiliar.newPhotosIds.count == 0
+                {
+                    break
+                }
+                
+                for (index, element2) in Auxiliar.newPhotosIds.enumerate()
+                {
+                    if element == element2
+                    {
+                        Auxiliar.newPhotosIds.removeAtIndex(index)
+                        break
+                    }
+                }
+            }
+            
+            currentUserImagesIds.removeAll()
+            
+            if Auxiliar.newPhotosIds.count > 0
+            {
+                retrieveNewImages(Auxiliar.newPhotosIds)
+            }
+            else
+            {
+                Auxiliar.hideLoadingHUDInView(self.view)
+                Auxiliar.presentAlertControllerWithTitle("No new images",
+                    andMessage: "No new images to load", forViewController: self)
+            }
+        }
+    }
+    
+    //-------------------------------------------------------------------------//
+    // MARK: Retrieve new images
+    //-------------------------------------------------------------------------//
+    
+    func retrieveNewImages(entitiesIds: [String])
+    {
+        kinveyBackend.fetchNewImages(entitiesIds, completion: {
+            
+            [unowned self](status: String, fetchedImages: [Image]?) -> Void in
+            
+            if status == "Success"
+            {
+                Auxiliar.newPhotosIds.removeAll()
+                let newTitle = "New"
+                let gray = UIColor(red: 102, green: 102, blue: 102)
+                self.newImagesButton.setTitle(newTitle, forState: .Normal)
+                self.newImagesButton.setTitleColor(gray, forState: .Normal)
+                self.newImagesButton.enabled = false
+                
+                self.incorporateNewItemsAtBeginning(fetchedImages!)
+            }
+            else
+            {
+                Auxiliar.hideLoadingHUDInView(self.view)
+                Auxiliar.presentAlertControllerWithTitle(status,
+                    andMessage: "Error loading new images", forViewController: self)
+            }
+        })
     }
     
     //-------------------------------------------------------------------------//
@@ -190,12 +320,44 @@ class PickImage_VC: UIViewController, UICollectionViewDataSource, UICollectionVi
     }
     
     //-------------------------------------------------------------------------//
+    // MARK: Incorporate new items at beginning
+    //-------------------------------------------------------------------------//
+    
+    func incorporateNewItemsAtBeginning(imgs: [Image])
+    {
+        var indexPath: NSIndexPath = NSIndexPath(forItem: 0, inSection: 0)
+        var counter = 0
+        var newItems = [NSIndexPath]()
+        
+        for image in imgs
+        {
+            indexPath = NSIndexPath(forItem: counter, inSection: 0)
+            newItems.append(indexPath)
+            
+            images.insert(image, atIndex: counter)
+            
+            counter++
+        }
+        
+        collectionView.performBatchUpdates({
+            
+            [unowned self]() -> Void in
+            
+            self.collectionView.insertItemsAtIndexPaths(newItems)
+            }){
+                completed in
+                
+                Auxiliar.hideLoadingHUDInView(self.view)
+            }
+    }
+    
+    //-------------------------------------------------------------------------//
     // MARK: Incorporate new search items
     //-------------------------------------------------------------------------//
     
-    func incorporateNewSearchItems(imgs : [Image])
+    func incorporateNewSearchItems(imgs: [Image])
     {
-        var indexPath : NSIndexPath = NSIndexPath(forItem: 0, inSection: 0)
+        var indexPath: NSIndexPath = NSIndexPath(forItem: 0, inSection: 0)
         var counter = collectionView.numberOfItemsInSection(0)
         var newItems = [NSIndexPath]()
         
@@ -231,6 +393,9 @@ class PickImage_VC: UIViewController, UICollectionViewDataSource, UICollectionVi
     {
         let chosenImage = info[UIImagePickerControllerEditedImage] as! UIImage
         dismissViewControllerAnimated(true, completion: nil)
+        
+        NSNotificationCenter.defaultCenter().postNotificationName("FilterPhoto", object: chosenImage)
+        filtersContainerView.hidden = false
     }
     
     func imagePickerControllerDidCancel(picker: UIImagePickerController)
@@ -252,7 +417,7 @@ class PickImage_VC: UIViewController, UICollectionViewDataSource, UICollectionVi
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("ItemForSaleCell",
             forIndexPath: indexPath) as! ImageCell
         
-        let image = images[indexPath.row]
+        let image = images[indexPath.item]
         cell.imageView.image = image.image
         
         return cell
@@ -265,8 +430,8 @@ class PickImage_VC: UIViewController, UICollectionViewDataSource, UICollectionVi
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
         sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize
     {
-        let cellWidth = self.view.frame.size.width/2
-        return CGSizeMake(cellWidth, cellWidth)
+        let cellSide = self.view.frame.size.width/2
+        return CGSizeMake(cellSide, cellSide)
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
@@ -283,10 +448,11 @@ class PickImage_VC: UIViewController, UICollectionViewDataSource, UICollectionVi
     {
         buttonsStackViewHeightConstraint.constant *= multiplier
         
-        let fontSize = 17.0 * multiplier
+        let fontSize = 15.0 * multiplier
         albumButton.titleLabel!.font =  UIFont(name: "HelveticaNeue", size: fontSize)
         cameraButton.titleLabel!.font =  UIFont(name: "HelveticaNeue", size: fontSize)
         signOutButton.titleLabel!.font =  UIFont(name: "HelveticaNeue", size: fontSize)
+        newImagesButton.titleLabel!.font =  UIFont(name: "HelveticaNeue-Bold", size: fontSize)
     }
     
     //-------------------------------------------------------------------------//
