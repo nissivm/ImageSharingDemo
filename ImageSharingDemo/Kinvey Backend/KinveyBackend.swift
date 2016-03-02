@@ -124,48 +124,46 @@ class KinveyBackend
     
     var skip: Int = 0
     
-    func fetchImages(completion:(status: String, objects: [Image]?) -> Void)
+    func fetchImages(completion:(status: String, fetchedImages: [Image]?) -> Void)
     {
-        let store = KCSLinkedAppdataStore.storeWithOptions([
-            KCSStoreKeyCollectionName : "Images",
-            KCSStoreKeyCollectionTemplateClass : Image.self
-            ])
+        let dataSort = KCSQuerySortModifier(field: KCSMetadataFieldLastModifiedTime,
+                                      inDirection: KCSSortDirection.Descending)
         
-        let query = KCSQuery(onField: "imageLink", usingConditional: .KCSNotEqual,
-                            forValue: "dummylink")
+        let query = KCSQuery()
             query.limitModifer = KCSQueryLimitModifier(limit: 8)
             query.skipModifier = KCSQuerySkipModifier(withcount: skip)
-            query.addSortModifier(KCSQuerySortModifier(field: "date",
-                                    inDirection: KCSSortDirection.Descending))
+            query.addSortModifier(dataSort)
         
-        store.queryWithQuery(query,
-            withCompletionBlock: {
+        KCSFileStore.downloadDataByQuery(query,
+            completionBlock: {
                 
-                [unowned self](objectsOrNil, errorOrNil) -> Void in
+                (downloadedResources: [AnyObject]!, error: NSError!) -> Void in
                 
-                guard errorOrNil == nil else
+                guard error == nil else
                 {
-                    completion(status: "Error", objects: nil)
+                    completion(status: "Error", fetchedImages: nil)
                     return
                 }
                 
-                guard let results = objectsOrNil as? [Image] else
+                guard downloadedResources.count > 0 else
                 {
-                    completion(status: "Error", objects: nil)
+                    completion(status: "No results", fetchedImages: nil)
                     return
                 }
                 
-                if results.count > 0
+                var images = [Image]()
+                
+                for resource in downloadedResources
                 {
-                    self.skip += 8
-                    completion(status: "Success", objects: results)
+                    let file = resource as! KCSFile
+                    let imgObj = Image(fileId: file.fileId, imageData: file.data)
+                    images.append(imgObj)
                 }
-                else
-                {
-                    completion(status: "No results", objects: nil)
-                }
+                
+                self.skip += 8
+                completion(status: "Success", fetchedImages: images)
             },
-            withProgressBlock: nil
+            progressBlock: nil
         )
     }
     
@@ -173,34 +171,32 @@ class KinveyBackend
     // MARK: Fetches images using their ids
     //-------------------------------------------------------------------------//
     
-    func fetchNewImages(entitiesIds: [String],
+    func fetchNewImages(filesIds: [String],
         completion:(status: String, fetchedImages: [Image]?) -> Void)
     {
-        let store = KCSLinkedAppdataStore.storeWithOptions([
-            KCSStoreKeyCollectionName : "Images",
-            KCSStoreKeyCollectionTemplateClass : Image.self
-            ])
-        
-        store.loadObjectWithID(entitiesIds,
-            withCompletionBlock: {
+        KCSFileStore.downloadData(filesIds,
+            completionBlock: {
                 
-                (objectsOrNil, errorOrNil) -> Void in
+                (downloadedResources: [AnyObject]!, error: NSError!) -> Void in
                 
-                guard errorOrNil == nil else
+                guard error == nil else
                 {
                     completion(status: "Error", fetchedImages: nil)
                     return
                 }
                 
-                guard let results = objectsOrNil as? [Image] else
+                var images = [Image]()
+                
+                for resource in downloadedResources
                 {
-                    completion(status: "Error", fetchedImages: nil)
-                    return
+                    let file = resource as! KCSFile
+                    let imgObj = Image(fileId: file.fileId, imageData: file.data)
+                    images.append(imgObj)
                 }
                 
-                completion(status: "Success", fetchedImages: results)
+                completion(status: "Success", fetchedImages: images)
             },
-            withProgressBlock: nil
+            progressBlock: nil
         )
     }
     
@@ -211,36 +207,31 @@ class KinveyBackend
     func saveImage(imageToSave: UIImage,
         completion:(status: String, savedImg: Image?, errorMessage: String) -> Void)
     {
-        let image = Image()
-            image.image = imageToSave
-            image.date = NSDate()
+        let data = UIImageJPEGRepresentation(imageToSave, 1.0)
         
-        let store = KCSLinkedAppdataStore.storeWithOptions([
-            KCSStoreKeyCollectionName : "Images",
-            KCSStoreKeyCollectionTemplateClass : Image.self
-            ])
+        let metadata = KCSMetadata()
+            metadata.setGloballyReadable(true)
         
-        store.saveObject(image,
-            withCompletionBlock: {
+        KCSFileStore.uploadData(data,
+            options: [
+                KCSFileMimeType : "image/jpeg",
+                KCSFileACL : metadata
+            ],
+            completionBlock: {
                 
-                (objectsOrNil, errorOrNil) -> Void in
+                (uploadInfo: KCSFile!, error: NSError!) -> Void in
                 
-                guard errorOrNil == nil else
+                guard error == nil else
                 {
                     completion(status: "Error", savedImg: nil, errorMessage: "Error saving image")
                     return
                 }
                 
-                guard let results = objectsOrNil as? [Image] else
-                {
-                    completion(status: "Error", savedImg: nil, errorMessage: "Error saving image")
-                    return
-                }
+                let imgObj = Image(fileId: uploadInfo.fileId, imageData: uploadInfo.data)
                 
-                let savedImg = results[0]
-                completion(status: "Success", savedImg: savedImg, errorMessage: "")
+                completion(status: "Success", savedImg: imgObj, errorMessage: "")
             },
-            withProgressBlock: nil
+            progressBlock: nil
         )
     }
 }

@@ -93,10 +93,10 @@ class FiltersContainerView: UIViewController, UICollectionViewDataSource, UIColl
             }
             
             self.savedImg = savedImg
-            let entityId = savedImg!.entityId!
+            let fileId = savedImg!.fileId
             
             let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-                appDelegate.sendPushNotification(entityId, completion: {
+                appDelegate.sendPushNotification(fileId, completion: {
                 
                     (status) -> Void in
                 

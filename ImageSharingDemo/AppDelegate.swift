@@ -69,7 +69,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: Sends push notifications
     //-------------------------------------------------------------------------//
     
-    func sendPushNotification(entityId: String, completion:(status: String) -> Void)
+    func sendPushNotification(fileId: String, completion:(status: String) -> Void)
     {
         let params = ["contents": ["en": "New photo!"],
                           "tags": ["key": "RegisteredForPushes", "relation": "=", "value": "true"],
@@ -77,7 +77,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 "ios_badgeCount": 1,
              "content_available": true,
                      "ios_sound": "notification.caf",
-                          "data": ["EntityId": entityId]]
+                          "data": ["EntityId": fileId]]
         
         oneSignal.postNotification(params,
             onSuccess: {

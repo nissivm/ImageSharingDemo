@@ -125,8 +125,8 @@ class PickImage_VC: UIViewController, UICollectionViewDataSource, UICollectionVi
         if notification.object != nil
         {
             let savedImg = notification.object as! Image
-            let entityId = savedImg.entityId!
-            currentUserImagesIds.append(entityId)
+            let fileId = savedImg.fileId
+            currentUserImagesIds.append(fileId)
             
             incorporateNewItemsAtBeginning([savedImg])
         }
@@ -231,9 +231,9 @@ class PickImage_VC: UIViewController, UICollectionViewDataSource, UICollectionVi
     // MARK: Retrieve new images
     //-------------------------------------------------------------------------//
     
-    func retrieveNewImages(entitiesIds: [String])
+    func retrieveNewImages(filesIds: [String])
     {
-        kinveyBackend.fetchNewImages(entitiesIds, completion: {
+        kinveyBackend.fetchNewImages(filesIds, completion: {
             
             [unowned self](status: String, fetchedImages: [Image]?) -> Void in
             
@@ -273,11 +273,11 @@ class PickImage_VC: UIViewController, UICollectionViewDataSource, UICollectionVi
         
         kinveyBackend.fetchImages({
             
-            [unowned self](status: String, objects: [Image]?) -> Void in
+            [unowned self](status: String, fetchedImages: [Image]?) -> Void in
             
             if status == "Success"
             {
-                self.incorporateNewSearchItems(objects!)
+                self.incorporateNewSearchItems(fetchedImages!)
             }
             else
             {
@@ -414,11 +414,19 @@ class PickImage_VC: UIViewController, UICollectionViewDataSource, UICollectionVi
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell
     {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("ItemForSaleCell",
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("ImageCell",
             forIndexPath: indexPath) as! ImageCell
         
-        let image = images[indexPath.item]
-        cell.imageView.image = image.image
+        let imageObj = images[indexPath.item]
+        
+        if let img = imageObj.image
+        {
+            cell.imageView.image = img
+        }
+        else
+        {
+            print("imageObj.image == nil")
+        }
         
         return cell
     }

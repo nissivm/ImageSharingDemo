@@ -18,13 +18,19 @@ class Auxiliar
     
     static func showLoadingHUDWithText(labelText : String, forView view : UIView)
     {
-        let progressHud = MBProgressHUD.showHUDAddedTo(view, animated: true)
-            progressHud.labelText = labelText
+        dispatch_async(dispatch_get_main_queue())
+        {
+            let progressHud = MBProgressHUD.showHUDAddedTo(view, animated: true)
+                progressHud.labelText = labelText
+        }
     }
     
     static func hideLoadingHUDInView(view : UIView)
     {
-        MBProgressHUD.hideAllHUDsForView(view, animated: true)
+        dispatch_async(dispatch_get_main_queue())
+        {
+            MBProgressHUD.hideAllHUDsForView(view, animated: true)
+        }
     }
     
     //-------------------------------------------------------------------------//
