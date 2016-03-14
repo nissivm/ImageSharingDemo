@@ -119,6 +119,33 @@ class KinveyBackend
     }
     
     //-------------------------------------------------------------------------//
+    // MARK: Fetches all KCSUsers
+    //-------------------------------------------------------------------------//
+    
+    func fetchUsers(completion:(status: String, fetchedUsers: [KCSUser]?) -> Void)
+    {
+        let userCollection = KCSCollection.userCollection()
+        let userStore = KCSAppdataStore(collection: userCollection, options: nil)
+        
+        userStore.queryWithQuery(KCSQuery(),
+            withCompletionBlock: {
+                
+                (objectsOrNil, errorOrNil) -> Void in
+                
+                guard errorOrNil == nil else
+                {
+                    completion(status: "Error", fetchedUsers: nil)
+                    return
+                }
+                
+                let users = objectsOrNil as! [KCSUser]
+                completion(status: "Success", fetchedUsers: users)
+            },
+            withProgressBlock: nil
+        )
+    }
+    
+    //-------------------------------------------------------------------------//
     // MARK: Fetches images using a query
     //-------------------------------------------------------------------------//
     
@@ -126,18 +153,14 @@ class KinveyBackend
     
     func fetchImages(completion:(status: String, fetchedImages: [Image]?) -> Void)
     {
-        let dataSort = KCSQuerySortModifier(field: KCSMetadataFieldLastModifiedTime,
-                                      inDirection: KCSSortDirection.Descending)
-        
         let query = KCSQuery()
             query.limitModifer = KCSQueryLimitModifier(limit: 8)
             query.skipModifier = KCSQuerySkipModifier(withcount: skip)
-            query.addSortModifier(dataSort)
         
         KCSFileStore.downloadDataByQuery(query,
             completionBlock: {
                 
-                (downloadedResources: [AnyObject]!, error: NSError!) -> Void in
+                (downloadedResources, error) -> Void in
                 
                 guard error == nil else
                 {
@@ -168,33 +191,27 @@ class KinveyBackend
     }
     
     //-------------------------------------------------------------------------//
-    // MARK: Fetches images using their ids
+    // MARK: Fetches one image using it's id
     //-------------------------------------------------------------------------//
     
-    func fetchNewImages(filesIds: [String],
-        completion:(status: String, fetchedImages: [Image]?) -> Void)
+    func fetchNewImage(fileId: String,
+        completion:(status: String, fetchedImage: Image?) -> Void)
     {
-        KCSFileStore.downloadData(filesIds,
+        KCSFileStore.downloadData(fileId,
             completionBlock: {
                 
-                (downloadedResources: [AnyObject]!, error: NSError!) -> Void in
+                (downloadedResources, error) -> Void in
                 
                 guard error == nil else
                 {
-                    completion(status: "Error", fetchedImages: nil)
+                    completion(status: "Error", fetchedImage: nil)
                     return
                 }
                 
-                var images = [Image]()
+                let file = downloadedResources[0] as! KCSFile
+                let imgObj = Image(fileId: file.fileId, imageData: file.data)
                 
-                for resource in downloadedResources
-                {
-                    let file = resource as! KCSFile
-                    let imgObj = Image(fileId: file.fileId, imageData: file.data)
-                    images.append(imgObj)
-                }
-                
-                completion(status: "Success", fetchedImages: images)
+                completion(status: "Success", fetchedImage: imgObj)
             },
             progressBlock: nil
         )
@@ -219,7 +236,7 @@ class KinveyBackend
             ],
             completionBlock: {
                 
-                (uploadInfo: KCSFile!, error: NSError!) -> Void in
+                (uploadInfo, error) -> Void in
                 
                 guard error == nil else
                 {
@@ -227,7 +244,8 @@ class KinveyBackend
                     return
                 }
                 
-                let imgObj = Image(fileId: uploadInfo.fileId, imageData: uploadInfo.data)
+                let imgObj = Image(fileId: uploadInfo.fileId, imageData: nil)
+                    imgObj.image = imageToSave
                 
                 completion(status: "Success", savedImg: imgObj, errorMessage: "")
             },

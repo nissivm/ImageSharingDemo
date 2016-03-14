@@ -22,6 +22,7 @@ extension UIColor
 
 class PickImage_VC: UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIScrollViewDelegate
 {
+    @IBOutlet weak var background: UIImageView!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var albumButton: UIButton!
     @IBOutlet weak var cameraButton: UIButton!
@@ -57,16 +58,34 @@ class PickImage_VC: UIViewController, UICollectionViewDataSource, UICollectionVi
         prefersStatusBarHidden()
         setNeedsStatusBarAppearanceUpdate()
         
+        var backImg = ""
+        
+        if Device.IS_IPHONE_4
+        {
+            backImg = "iphone4_back"
+        }
+        
+        if Device.IS_IPHONE_5
+        {
+            backImg = "iphone5_back"
+        }
+        
         if Device.IS_IPHONE_6
         {
+            backImg = "iphone6_back"
             multiplier = Constants.multiplier6
             adjustForBiggerScreen()
         }
-        else if Device.IS_IPHONE_6_PLUS
+        
+        if Device.IS_IPHONE_6_PLUS
         {
+            backImg = "iphone6plus_back"
             multiplier = Constants.multiplier6plus
             adjustForBiggerScreen()
         }
+        
+        let path = NSBundle.mainBundle().pathForResource(backImg, ofType:"jpg")
+        background.image = UIImage(contentsOfFile: path!)
         
         if KCSUser.activeUser() != nil
         {
@@ -109,14 +128,9 @@ class PickImage_VC: UIViewController, UICollectionViewDataSource, UICollectionVi
     
     func newPhoto()
     {
-        let newTitle = "New (\(Auxiliar.newPhotosIds.count))"
-        let green = UIColor(red: 42, green: 191, blue: 124)
-        newImagesButton.setTitle(newTitle, forState: .Normal)
-        newImagesButton.setTitleColor(green, forState: .Normal)
+        newImagesButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
         newImagesButton.enabled = true
     }
-    
-    var currentUserImagesIds = [String]()
     
     func closeFiltersContainerView(notification : NSNotification)
     {
@@ -125,10 +139,7 @@ class PickImage_VC: UIViewController, UICollectionViewDataSource, UICollectionVi
         if notification.object != nil
         {
             let savedImg = notification.object as! Image
-            let fileId = savedImg.fileId
-            currentUserImagesIds.append(fileId)
-            
-            incorporateNewItemsAtBeginning([savedImg])
+            incorporateNewImage(savedImg)
         }
     }
     
@@ -178,83 +189,69 @@ class PickImage_VC: UIViewController, UICollectionViewDataSource, UICollectionVi
                 return
             }
             
-            Auxiliar.showLoadingHUDWithText("Loading new images...", forView: self.view)
-            filterImagesToRetrieve()
+            Auxiliar.showLoadingHUDWithText("Loading new image...", forView: self.view)
+            retrieveNewImage(Auxiliar.newPhotosIds.first!)
         }
     }
     
     //-------------------------------------------------------------------------//
-    // MARK: Filter images to retrieve
+    // MARK: Retrieve new image
     //-------------------------------------------------------------------------//
     
-    func filterImagesToRetrieve()
+    func retrieveNewImage(fileId: String)
     {
-        if currentUserImagesIds.count == 0
-        {
-            retrieveNewImages(Auxiliar.newPhotosIds)
-        }
-        else
-        {
-            for element in currentUserImagesIds
-            {
-                if Auxiliar.newPhotosIds.count == 0
-                {
-                    break
-                }
-                
-                for (index, element2) in Auxiliar.newPhotosIds.enumerate()
-                {
-                    if element == element2
-                    {
-                        Auxiliar.newPhotosIds.removeAtIndex(index)
-                        break
-                    }
-                }
-            }
+        kinveyBackend.fetchNewImage(fileId, completion: {
             
-            currentUserImagesIds.removeAll()
+            [unowned self](status: String, fetchedImage: Image?) -> Void in
             
-            if Auxiliar.newPhotosIds.count > 0
-            {
-                retrieveNewImages(Auxiliar.newPhotosIds)
-            }
-            else
-            {
-                Auxiliar.hideLoadingHUDInView(self.view)
-                Auxiliar.presentAlertControllerWithTitle("No new images",
-                    andMessage: "No new images to load", forViewController: self)
-            }
-        }
-    }
-    
-    //-------------------------------------------------------------------------//
-    // MARK: Retrieve new images
-    //-------------------------------------------------------------------------//
-    
-    func retrieveNewImages(filesIds: [String])
-    {
-        kinveyBackend.fetchNewImages(filesIds, completion: {
-            
-            [unowned self](status: String, fetchedImages: [Image]?) -> Void in
-            
-            if status == "Success"
-            {
-                Auxiliar.newPhotosIds.removeAll()
-                let newTitle = "New"
-                let gray = UIColor(red: 102, green: 102, blue: 102)
-                self.newImagesButton.setTitle(newTitle, forState: .Normal)
-                self.newImagesButton.setTitleColor(gray, forState: .Normal)
-                self.newImagesButton.enabled = false
-                
-                self.incorporateNewItemsAtBeginning(fetchedImages!)
-            }
-            else
+            guard status == "Success" else
             {
                 Auxiliar.hideLoadingHUDInView(self.view)
                 Auxiliar.presentAlertControllerWithTitle(status,
-                    andMessage: "Error loading new images", forViewController: self)
+                    andMessage: "Error loading new image", forViewController: self)
+                return
             }
+            
+            for (index, photoId) in Auxiliar.newPhotosIds.enumerate()
+            {
+                if photoId == fileId
+                {
+                    Auxiliar.newPhotosIds.removeAtIndex(index)
+                    break
+                }
+            }
+            
+            if Auxiliar.newPhotosIds.count == 0
+            {
+                self.newImagesButton.setTitleColor(UIColor.darkGrayColor(), forState: .Normal)
+                self.newImagesButton.enabled = false
+            }
+            
+            self.incorporateNewImage(fetchedImage!)
         })
+    }
+    
+    //-------------------------------------------------------------------------//
+    // MARK: Incorporate new image
+    //-------------------------------------------------------------------------//
+    
+    func incorporateNewImage(img: Image)
+    {
+        let newIdx = collectionView.numberOfItemsInSection(0)
+        let indexPath: NSIndexPath = NSIndexPath(forItem: newIdx, inSection: 0)
+        let newItem = [indexPath]
+        images.append(img)
+        
+        collectionView.performBatchUpdates({
+            
+            [unowned self]() -> Void in
+            
+            self.collectionView.insertItemsAtIndexPaths(newItem)
+            }){
+                completed in
+                
+                Auxiliar.hideLoadingHUDInView(self.view)
+            }
     }
     
     //-------------------------------------------------------------------------//
@@ -277,7 +274,7 @@ class PickImage_VC: UIViewController, UICollectionViewDataSource, UICollectionVi
             
             if status == "Success"
             {
-                self.incorporateNewSearchItems(fetchedImages!)
+                self.incorporateSearchedImages(fetchedImages!)
             }
             else
             {
@@ -320,42 +317,10 @@ class PickImage_VC: UIViewController, UICollectionViewDataSource, UICollectionVi
     }
     
     //-------------------------------------------------------------------------//
-    // MARK: Incorporate new items at beginning
-    //-------------------------------------------------------------------------//
-    
-    func incorporateNewItemsAtBeginning(imgs: [Image])
-    {
-        var indexPath: NSIndexPath = NSIndexPath(forItem: 0, inSection: 0)
-        var counter = 0
-        var newItems = [NSIndexPath]()
-        
-        for image in imgs
-        {
-            indexPath = NSIndexPath(forItem: counter, inSection: 0)
-            newItems.append(indexPath)
-            
-            images.insert(image, atIndex: counter)
-            
-            counter++
-        }
-        
-        collectionView.performBatchUpdates({
-            
-            [unowned self]() -> Void in
-            
-            self.collectionView.insertItemsAtIndexPaths(newItems)
-            }){
-                completed in
-                
-                Auxiliar.hideLoadingHUDInView(self.view)
-            }
-    }
-    
-    //-------------------------------------------------------------------------//
     // MARK: Incorporate new search items
     //-------------------------------------------------------------------------//
     
-    func incorporateNewSearchItems(imgs: [Image])
+    func incorporateSearchedImages(imgs: [Image])
     {
         var indexPath: NSIndexPath = NSIndexPath(forItem: 0, inSection: 0)
         var counter = collectionView.numberOfItemsInSection(0)
@@ -448,6 +413,13 @@ class PickImage_VC: UIViewController, UICollectionViewDataSource, UICollectionVi
         return 0
     }
     
+    func collectionView(collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat
+    {
+        return 0
+    }
+    
     //-------------------------------------------------------------------------//
     // MARK: Ajust for bigger screen
     //-------------------------------------------------------------------------//
@@ -456,11 +428,11 @@ class PickImage_VC: UIViewController, UICollectionViewDataSource, UICollectionVi
     {
         buttonsStackViewHeightConstraint.constant *= multiplier
         
-        let fontSize = 15.0 * multiplier
+        let fontSize = 14.0 * multiplier
         albumButton.titleLabel!.font =  UIFont(name: "HelveticaNeue", size: fontSize)
         cameraButton.titleLabel!.font =  UIFont(name: "HelveticaNeue", size: fontSize)
         signOutButton.titleLabel!.font =  UIFont(name: "HelveticaNeue", size: fontSize)
-        newImagesButton.titleLabel!.font =  UIFont(name: "HelveticaNeue-Bold", size: fontSize)
+        newImagesButton.titleLabel!.font =  UIFont(name: "HelveticaNeue", size: fontSize)
     }
     
     //-------------------------------------------------------------------------//

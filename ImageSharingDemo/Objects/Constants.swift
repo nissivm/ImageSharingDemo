@@ -11,11 +11,11 @@ import Foundation
 class Constants
 {
     // One Signal
-    static let appId = "8e41fd48-7d18-4b3a-a576-a3c5cad2f2b4"
+    static let appId = "YOUR ONE SIGNAL APP ID"
     
     // Kinvey
-    static let appKey = "kid_-JXporqLAl"
-    static let appSecret = "ec61dae8b0ca4a16af041a0061f2fd10"
+    static let appKey = "YOUR KINVEY APP KEY"
+    static let appSecret = "YOUR KINVEY APP SECRET"
     
     // Multipliers
     static let multiplier6: CGFloat = 1.14

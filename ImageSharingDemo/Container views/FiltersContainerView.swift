@@ -10,6 +10,7 @@ import UIKit
 
 class FiltersContainerView: UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
 {
+    @IBOutlet weak var background: UIImageView!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var originalImageButton: UIButton!
@@ -30,16 +31,34 @@ class FiltersContainerView: UIViewController, UICollectionViewDataSource, UIColl
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "filterPhoto:",
                                                                 name: "FilterPhoto", object: nil)
         
+        var backImg = ""
+        
+        if Device.IS_IPHONE_4
+        {
+            backImg = "iphone4_back"
+        }
+        
+        if Device.IS_IPHONE_5
+        {
+            backImg = "iphone5_back"
+        }
+        
         if Device.IS_IPHONE_6
         {
+            backImg = "iphone6_back"
             multiplier = Constants.multiplier6
             adjustForBiggerScreen()
         }
-        else if Device.IS_IPHONE_6_PLUS
+        
+        if Device.IS_IPHONE_6_PLUS
         {
+            backImg = "iphone6plus_back"
             multiplier = Constants.multiplier6plus
             adjustForBiggerScreen()
         }
+        
+        let path = NSBundle.mainBundle().pathForResource(backImg, ofType:"jpg")
+        background.image = UIImage(contentsOfFile: path!)
     }
     
     deinit
@@ -98,12 +117,11 @@ class FiltersContainerView: UIViewController, UICollectionViewDataSource, UIColl
             let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
                 appDelegate.sendPushNotification(fileId, completion: {
                 
-                    (status) -> Void in
+                    (status, message) -> Void in
                 
                     Auxiliar.hideLoadingHUDInView(self.view)
                     
-                    self.promptUserForSuccessfulImageSharing(status,
-                        message: "Image successfully published!")
+                    self.promptUserForSuccessfulImageSharing(status, message: message)
                 })
         })
     }
@@ -125,7 +143,10 @@ class FiltersContainerView: UIViewController, UICollectionViewDataSource, UIColl
         
         alert.addAction(okAction)
         
-        presentViewController(alert, animated: true, completion: nil)
+        dispatch_async(dispatch_get_main_queue())
+        {
+            self.presentViewController(alert, animated: true, completion: nil)
+        }
     }
     
     //-------------------------------------------------------------------------//
@@ -155,8 +176,7 @@ class FiltersContainerView: UIViewController, UICollectionViewDataSource, UIColl
         
         let filter = filters[indexPath.item]
         cell.filterName.text = filter
-        let fontSize = 17.0 * multiplier
-        cell.filterName.font =  UIFont(name: "HelveticaNeue", size: fontSize)
+        cell.filterName.font =  UIFont(name: "HelveticaNeue", size: (14.0 * multiplier))
         
         return cell
     }
@@ -194,17 +214,8 @@ class FiltersContainerView: UIViewController, UICollectionViewDataSource, UIColl
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
         sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize
     {
-        let cellWidth = self.view.frame.size.width/2
-        var cellHeight: CGFloat = 40
-        
-        if Device.IS_IPHONE_6
-        {
-            cellHeight *= Constants.multiplier6
-        }
-        else if Device.IS_IPHONE_6_PLUS
-        {
-            cellHeight *= Constants.multiplier6plus
-        }
+        let cellWidth = self.view.frame.size.width/3
+        let cellHeight = 39 * multiplier
         
         return CGSizeMake(cellWidth, cellHeight)
     }
@@ -212,7 +223,14 @@ class FiltersContainerView: UIViewController, UICollectionViewDataSource, UIColl
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
         minimumInteritemSpacingForSectionAtIndex section: Int) -> CGFloat
     {
-        return 1
+        return 0
+    }
+    
+    func collectionView(collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat
+    {
+        return 0
     }
     
     //-------------------------------------------------------------------------//
@@ -224,7 +242,7 @@ class FiltersContainerView: UIViewController, UICollectionViewDataSource, UIColl
         collectionViewHeightConstraint.constant *= multiplier
         buttonsStackViewHeightConstraint.constant *= multiplier
         
-        let fontSize = 15.0 * multiplier
+        let fontSize = 14.0 * multiplier
         cancelButton.titleLabel!.font =  UIFont(name: "HelveticaNeue", size: fontSize)
         originalImageButton.titleLabel!.font =  UIFont(name: "HelveticaNeue", size: fontSize)
         shareButton.titleLabel!.font =  UIFont(name: "HelveticaNeue", size: fontSize)

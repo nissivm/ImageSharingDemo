@@ -10,7 +10,6 @@
 		20266BC01C8098A30017C967 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20266BBF1C8098A30017C967 /* AppDelegate.swift */; };
 		20266BC51C8098A30017C967 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20266BC31C8098A30017C967 /* Main.storyboard */; };
 		20266BC71C8098A30017C967 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20266BC61C8098A30017C967 /* Assets.xcassets */; };
-		20266BCA1C8098A30017C967 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20266BC81C8098A30017C967 /* LaunchScreen.storyboard */; };
 		20266BD51C8098A30017C967 /* ImageSharingDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20266BD41C8098A30017C967 /* ImageSharingDemoTests.swift */; };
 		20266BE61C809ABF0017C967 /* AuthenticationContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20266BE51C809ABF0017C967 /* AuthenticationContainerView.swift */; };
 		20266BE81C809AD50017C967 /* ImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20266BE71C809AD50017C967 /* ImageCell.swift */; };
@@ -22,11 +21,14 @@
 		20266BF51C809AF50017C967 /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20266BF01C809AF50017C967 /* Filter.swift */; };
 		20266BF61C809AF50017C967 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20266BF11C809AF50017C967 /* Reachability.swift */; };
 		20266BF81C809B090017C967 /* PickImage_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20266BF71C809B090017C967 /* PickImage_VC.swift */; };
-		20266BFB1C809B250017C967 /* coconut-palm.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 20266BF91C809B250017C967 /* coconut-palm.jpg */; };
 		20266BFD1C809B980017C967 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 20266BFC1C809B980017C967 /* Podfile */; };
 		20266BFF1C80A16C0017C967 /* notification.caf in Resources */ = {isa = PBXBuildFile; fileRef = 20266BFE1C80A16C0017C967 /* notification.caf */; };
 		20266C011C80EB9C0017C967 /* FiltersContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20266C001C80EB9C0017C967 /* FiltersContainerView.swift */; };
 		20266C031C80F15B0017C967 /* FilterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20266C021C80F15B0017C967 /* FilterCell.swift */; };
+		20BACEEF1C8F6FF300072153 /* iphone4_back.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 20BACEEB1C8F6FF300072153 /* iphone4_back.jpg */; };
+		20BACEF01C8F6FF300072153 /* iphone5_back.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 20BACEEC1C8F6FF300072153 /* iphone5_back.jpg */; };
+		20BACEF11C8F6FF300072153 /* iphone6_back.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 20BACEED1C8F6FF300072153 /* iphone6_back.jpg */; };
+		20BACEF21C8F6FF300072153 /* iphone6plus_back.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 20BACEEE1C8F6FF300072153 /* iphone6plus_back.jpg */; };
 		B2C829DAD2703F334072CD0E /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 50925EF949B80F47C44FE795 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -46,7 +48,6 @@
 		20266BBF1C8098A30017C967 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		20266BC41C8098A30017C967 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		20266BC61C8098A30017C967 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		20266BC91C8098A30017C967 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		20266BCB1C8098A30017C967 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		20266BD01C8098A30017C967 /* ImageSharingDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ImageSharingDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		20266BD41C8098A30017C967 /* ImageSharingDemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSharingDemoTests.swift; sourceTree = "<group>"; };
@@ -61,12 +62,15 @@
 		20266BF01C809AF50017C967 /* Filter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Filter.swift; path = Objects/Filter.swift; sourceTree = "<group>"; };
 		20266BF11C809AF50017C967 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Reachability.swift; path = Objects/Reachability.swift; sourceTree = "<group>"; };
 		20266BF71C809B090017C967 /* PickImage_VC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PickImage_VC.swift; path = "View controllers/PickImage_VC.swift"; sourceTree = "<group>"; };
-		20266BF91C809B250017C967 /* coconut-palm.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "coconut-palm.jpg"; sourceTree = "<group>"; };
 		20266BFA1C809B250017C967 /* BridgingHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BridgingHeader.h; sourceTree = "<group>"; };
 		20266BFC1C809B980017C967 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		20266BFE1C80A16C0017C967 /* notification.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = notification.caf; sourceTree = "<group>"; };
 		20266C001C80EB9C0017C967 /* FiltersContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FiltersContainerView.swift; path = "Container views/FiltersContainerView.swift"; sourceTree = "<group>"; };
 		20266C021C80F15B0017C967 /* FilterCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FilterCell.swift; path = "Custom cells/FilterCell.swift"; sourceTree = "<group>"; };
+		20BACEEB1C8F6FF300072153 /* iphone4_back.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = iphone4_back.jpg; path = Backgrounds/iphone4_back.jpg; sourceTree = "<group>"; };
+		20BACEEC1C8F6FF300072153 /* iphone5_back.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = iphone5_back.jpg; path = Backgrounds/iphone5_back.jpg; sourceTree = "<group>"; };
+		20BACEED1C8F6FF300072153 /* iphone6_back.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = iphone6_back.jpg; path = Backgrounds/iphone6_back.jpg; sourceTree = "<group>"; };
+		20BACEEE1C8F6FF300072153 /* iphone6plus_back.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = iphone6plus_back.jpg; path = Backgrounds/iphone6plus_back.jpg; sourceTree = "<group>"; };
 		50925EF949B80F47C44FE795 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		941620D319731A964B8ACDB3 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -114,6 +118,7 @@
 		20266BBE1C8098A30017C967 /* ImageSharingDemo */ = {
 			isa = PBXGroup;
 			children = (
+				20BACEEA1C8F6F2100072153 /* Backgrounds */,
 				20266BE41C809A880017C967 /* Container views */,
 				20266BE31C809A7D0017C967 /* Custom cells */,
 				20266BE21C809A6C0017C967 /* Kinvey Backend */,
@@ -123,8 +128,6 @@
 				20266BBF1C8098A30017C967 /* AppDelegate.swift */,
 				20266BC31C8098A30017C967 /* Main.storyboard */,
 				20266BC61C8098A30017C967 /* Assets.xcassets */,
-				20266BC81C8098A30017C967 /* LaunchScreen.storyboard */,
-				20266BF91C809B250017C967 /* coconut-palm.jpg */,
 				20266BFA1C809B250017C967 /* BridgingHeader.h */,
 				20266BFE1C80A16C0017C967 /* notification.caf */,
 				20266BCB1C8098A30017C967 /* Info.plist */,
@@ -202,6 +205,17 @@
 				941620D319731A964B8ACDB3 /* Pods.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		20BACEEA1C8F6F2100072153 /* Backgrounds */ = {
+			isa = PBXGroup;
+			children = (
+				20BACEEB1C8F6FF300072153 /* iphone4_back.jpg */,
+				20BACEEC1C8F6FF300072153 /* iphone5_back.jpg */,
+				20BACEED1C8F6FF300072153 /* iphone6_back.jpg */,
+				20BACEEE1C8F6FF300072153 /* iphone6plus_back.jpg */,
+			);
+			name = Backgrounds;
 			sourceTree = "<group>";
 		};
 		413176EDD84A3AA40A5A9038 /* Frameworks */ = {
@@ -302,10 +316,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20BACEF21C8F6FF300072153 /* iphone6plus_back.jpg in Resources */,
 				20266BFD1C809B980017C967 /* Podfile in Resources */,
-				20266BCA1C8098A30017C967 /* LaunchScreen.storyboard in Resources */,
-				20266BFB1C809B250017C967 /* coconut-palm.jpg in Resources */,
+				20BACEF01C8F6FF300072153 /* iphone5_back.jpg in Resources */,
+				20BACEF11C8F6FF300072153 /* iphone6_back.jpg in Resources */,
 				20266BFF1C80A16C0017C967 /* notification.caf in Resources */,
+				20BACEEF1C8F6FF300072153 /* iphone4_back.jpg in Resources */,
 				20266BC71C8098A30017C967 /* Assets.xcassets in Resources */,
 				20266BC51C8098A30017C967 /* Main.storyboard in Resources */,
 			);
@@ -416,14 +432,6 @@
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		20266BC81C8098A30017C967 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				20266BC91C8098A30017C967 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -517,6 +525,7 @@
 			baseConfigurationReference = 1F66F7FC4FD45DA9BA894C41 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = ImageSharingDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -532,6 +541,7 @@
 			baseConfigurationReference = 941620D319731A964B8ACDB3 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = ImageSharingDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
