@@ -1,5 +1,5 @@
 # ImageSharingDemo
-Demo image filtering app using Kinvey for Sign Up/In/Out and One Signal for push notifications.
+Demo image filtering app using Kinvey for Sign Up/In/Out and file(images) storage and One Signal for push notifications.
 
 <img src="https://cloud.githubusercontent.com/assets/6089173/13791424/d95da972-eacb-11e5-8a20-d049fa5da7ff.jpg" alt="Sign Up" width="320" height="480"/>
 <img src="https://cloud.githubusercontent.com/assets/6089173/13791425/d9638da6-eacb-11e5-90b6-2ac891c7f12f.jpg" alt="Products" width="320" height="480"/>
