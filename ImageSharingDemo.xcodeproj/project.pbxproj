@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		202212321C98982C00EFE1DF /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 202212301C98982C00EFE1DF /* README.md */; };
+		202212331C98982C00EFE1DF /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 202212311C98982C00EFE1DF /* LICENSE */; };
 		20266BC01C8098A30017C967 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20266BBF1C8098A30017C967 /* AppDelegate.swift */; };
 		20266BC51C8098A30017C967 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20266BC31C8098A30017C967 /* Main.storyboard */; };
 		20266BC71C8098A30017C967 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20266BC61C8098A30017C967 /* Assets.xcassets */; };
@@ -44,6 +46,8 @@
 
 /* Begin PBXFileReference section */
 		1F66F7FC4FD45DA9BA894C41 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		202212301C98982C00EFE1DF /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		202212311C98982C00EFE1DF /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		20266BBC1C8098A30017C967 /* ImageSharingDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImageSharingDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		20266BBF1C8098A30017C967 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		20266BC41C8098A30017C967 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -97,6 +101,8 @@
 		20266BB31C8098A30017C967 = {
 			isa = PBXGroup;
 			children = (
+				202212301C98982C00EFE1DF /* README.md */,
+				202212311C98982C00EFE1DF /* LICENSE */,
 				20266BFC1C809B980017C967 /* Podfile */,
 				20266BBE1C8098A30017C967 /* ImageSharingDemo */,
 				20266BD31C8098A30017C967 /* ImageSharingDemoTests */,
@@ -322,6 +328,7 @@
 				20BACEF11C8F6FF300072153 /* iphone6_back.jpg in Resources */,
 				20266BFF1C80A16C0017C967 /* notification.caf in Resources */,
 				20BACEEF1C8F6FF300072153 /* iphone4_back.jpg in Resources */,
+				202212331C98982C00EFE1DF /* LICENSE in Resources */,
 				20266BC71C8098A30017C967 /* Assets.xcassets in Resources */,
 				20266BC51C8098A30017C967 /* Main.storyboard in Resources */,
 			);
@@ -399,6 +406,7 @@
 				20266BF81C809B090017C967 /* PickImage_VC.swift in Sources */,
 				20266BF61C809AF50017C967 /* Reachability.swift in Sources */,
 				20266C011C80EB9C0017C967 /* FiltersContainerView.swift in Sources */,
+				202212321C98982C00EFE1DF /* README.md in Sources */,
 				20266BC01C8098A30017C967 /* AppDelegate.swift in Sources */,
 				20266BF21C809AF50017C967 /* Auxiliar.swift in Sources */,
 				20266BF31C809AF50017C967 /* Constants.swift in Sources */,
